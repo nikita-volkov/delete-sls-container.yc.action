@@ -1,0 +1,17 @@
+name: Delete a serverless container in Yandex Cloud
+
+inputs:
+  container-id:
+    type: string
+    required: true
+    description: ID of the container to delete
+secrets:
+  SA_KEY:
+    required: true
+    description: Service account private key
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.container-id }}
+    - ${{ secrets.SA_KEY }}
