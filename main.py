@@ -44,8 +44,9 @@ def delete_container(sdk: yandexcloud.SDK, container_service, container_id):
 
 def main():
     logging.basicConfig(level=logging.INFO)
-    sa_key = sys.argv[0]
     container_id = sys.argv[1]
+    sa_key_str = sys.argv[2]
+    sa_key = json.loads(sa_key_str)
 
     interceptor = yandexcloud.RetryInterceptor(max_retry_count=5, retriable_codes=[grpc.StatusCode.UNAVAILABLE])
     sdk = yandexcloud.SDK(interceptor=interceptor, service_account_key=sa_key)
