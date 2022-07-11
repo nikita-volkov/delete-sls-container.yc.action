@@ -5,8 +5,8 @@ inputs:
     type: string
     required: true
     description: ID of the container to delete
-secrets:
-  SA_KEY:
+  sa-key:
+    type: string
     required: true
     description: Service account private key
 runs:
@@ -14,4 +14,4 @@ runs:
   image: Dockerfile
   args:
     - ${{ inputs.container-id }}
-    - ${{ secrets.SA_KEY }}
+    - ${{ inputs.sa-key }}
